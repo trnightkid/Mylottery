@@ -1,0 +1,7 @@
+node_modules/   # 如果是 Node.js 项目
+.idea/         # 如果是 IDE 配置
+build/         # 构建产物
+build/ 
+dist/ 
+*.exe 
+*.pkg 
