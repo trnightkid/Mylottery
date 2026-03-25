@@ -511,10 +511,18 @@ class EnhancedPredictor:
 
 
 def main():
-    """测试运行"""
+    """测试运行 - 图算法增强预测"""
     import pymysql
+    import os as _os
     
-    print("📥 加载数据...")
+    print("=" * 60)
+    print("🎯 图算法增强预测分析")
+    print("=" * 60)
+    
+    print("\n📥 加载数据...")
+    
+    # 优先尝试数据库，否则用CSV
+    df = None
     try:
         conn = pymysql.connect(
             host='localhost',
@@ -525,18 +533,37 @@ def main():
         )
         df = pd.read_sql("SELECT * FROM lottery_data ORDER BY CAST(period AS UNSIGNED) DESC LIMIT 500", conn)
         conn.close()
-    except:
-        # 备用：从CSV加载
-        df = pd.read_csv('/home/clawd/Mylottery/lottery_data.csv')
-        df = df.sort_values('period', ascending=False).head(500)
+        print(f"   ✅ 从数据库加载 {len(df)} 条数据")
+    except Exception as e:
+        csv_path = '/home/clawd/Mylottery/lottery_data.csv'
+        if _os.path.exists(csv_path):
+            df = pd.read_csv(csv_path)
+            df = df.sort_values('period', ascending=False).head(500)
+            print(f"   ✅ 从CSV加载 {len(df)} 条数据")
+        else:
+            print(f"   ❌ 数据源都不可用: {e}")
+            return
     
-    print(f"   加载{len(df)}条数据")
+    print(f"   📅 期号范围: {df['period'].min()} - {df['period'].max()}")
     
-    # 运行图算法分析
-    predictor = EnhancedPredictor(df)
-    predictions = predictor.generate_predictions(n=5)
+    # 运行分析
+    analyzer = EnhancedPredictor(df)
+    predictions = analyzer.generate_predictions(n=5)
     
-    print("\n✅ 分析完成!")
+    # 保存结果
+    out_dir = '/home/clawd/Mylottery/output'
+    _os.makedirs(out_dir, exist_ok=True)
+    
+    with open(f'{out_dir}/latest_predictions.txt', 'w', encoding='utf-8') as f:
+        f.write(f"生成时间: 2026-03-25\n")
+        f.write(f"数据量: {len(df)} 条\n")
+        f.write(f"\n{'='*60}\n")
+        for i, pred in enumerate(predictions, 1):
+            f.write(f"预测{i}: 红球{pred['reds']} 蓝球{pred['blue']:02d}\n")
+    
+    print(f"\n✅ 结果已保存到 {out_dir}/latest_predictions.txt")
+
+
 
 
 if __name__ == "__main__":
