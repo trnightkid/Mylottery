@@ -11,6 +11,7 @@ from datetime import datetime
 import os
 import warnings
 import requests
+import asyncio
 from bs4 import BeautifulSoup
 from nicegui import ui, run
 import base64
@@ -29,7 +30,7 @@ DB_CONFIG = {
     'connect_timeout': 10
 }
 
-OUTPUT_DIR = r"D:\Mydevelopment\MultiContentProject\Mylottery\dan_tuo_prediction"
+OUTPUT_DIR = r"D:\Mydevelopment\Mylottery\dan_tuo_prediction"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 config = {
@@ -95,6 +96,79 @@ async def save_to_database(data_list):
     cursor.close()
     conn.close()
     return saved_count
+
+
+# ======================================
+# ============== 数据分析模块 ==============
+def analyze_lottery_data():
+    """分析历史数据，返回分析结果"""
+    try:
+        df = load_data()
+        if df is None or len(df) < 10:
+            return None
+        
+        # 红球频率分析
+        red_cols = ['red1', 'red2', 'red3', 'red4', 'red5', 'red6']
+        all_reds = np.array([df[col].values for col in red_cols]).flatten()
+        red_freq = Counter(all_reds)
+        
+        # 蓝球频率分析
+        all_blues = df['blue'].values
+        blue_freq = Counter(all_blues)
+        
+        # 热号冷号
+        red_sorted = sorted(red_freq.items(), key=lambda x: -x[1])
+        blue_sorted = sorted(blue_freq.items(), key=lambda x: -x[1])
+        
+        red_hot = [x[0] for x in red_sorted[:10]]
+        red_cold = [x[0] for x in red_sorted[-10:]]
+        blue_hot = [x[0] for x in blue_sorted[:5]]
+        blue_cold = [x[0] for x in blue_sorted[-5:]]
+        
+        # 连号分析
+        consecutive_count = 0
+        for _, row in df.iterrows():
+            reds = sorted([row['red1'], row['red2'], row['red3'], row['red4'], row['red5'], row['red6']])
+            for i in range(len(reds) - 1):
+                if reds[i+1] - reds[i] == 1:
+                    consecutive_count += 1
+        
+        # 奇偶比例
+        odd_even_stats = {}
+        for _, row in df.iterrows():
+            reds = [row['red1'], row['red2'], row['red3'], row['red4'], row['red5'], row['red6']]
+            odd_count = sum(1 for r in reds if r % 2 == 1)
+            key = f"{odd_count}奇{6-odd_count}偶"
+            odd_even_stats[key] = odd_even_stats.get(key, 0) + 1
+        
+        # 区间分布
+        range_stats = {'01-11': 0, '12-22': 0, '23-33': 0}
+        for _, row in df.iterrows():
+            reds = [row['red1'], row['red2'], row['red3'], row['red4'], row['red5'], row['red6']]
+            for r in reds:
+                if r <= 11:
+                    range_stats['01-11'] += 1
+                elif r <= 22:
+                    range_stats['12-22'] += 1
+                else:
+                    range_stats['23-33'] += 1
+        
+        return {
+            'total_records': len(df),
+            'red_freq': dict(red_freq),
+            'blue_freq': dict(blue_freq),
+            'red_hot': red_hot,
+            'red_cold': red_cold,
+            'blue_hot': blue_hot,
+            'blue_cold': blue_cold,
+            'consecutive_ratio': consecutive_count / (len(df) * 6),
+            'odd_even_stats': odd_even_stats,
+            'range_stats': range_stats,
+            'df': df
+        }
+    except Exception as e:
+        print(f"数据分析错误: {e}")
+        return None
 
 
 # ======================================
@@ -405,17 +479,73 @@ def do_load_history_data(limit='all'):
         conn.close()
 
         table_rows = []
-        for r in rows:
-            reds = f"{r[1]:02d} {r[2]:02d} {r[3]:02d} {r[4]:02d} {r[5]:02d} {r[6]:02d}"
+        
+        # 获取最近10期出现过的红球（用于判断冷号）
+        recent_periods = []
+        for r in rows[:10]:  # 取前10期
+            recent_periods.append(set([r[1], r[2], r[3], r[4], r[5], r[6]]))
+        recent_nums = set().union(*recent_periods) if recent_periods else set()
+        
+        # 转换为列表便于索引
+        rows_list = list(rows)
+        
+        for i, r in enumerate(rows_list):
+            reds = [r[1], r[2], r[3], r[4], r[5], r[6]]
+            blue = r[7]
+            
+            # 判断重复（和上一期相同的号码）- 灰底橙色
+            # 上一期是数组中下一个元素（因为数据是从新到旧排列的）
+            duplicate_nums = set()
+            if i + 1 < len(rows_list):
+                next_reds = [rows_list[i+1][1], rows_list[i+1][2], rows_list[i+1][3], 
+                            rows_list[i+1][4], rows_list[i+1][5], rows_list[i+1][6]]
+                duplicate_nums = set(reds) & set(next_reds)
+            
+            # 判断连号（同一期内号码连续出现的）- 黄底黑色
+            sorted_reds = sorted(reds)
+            consecutive_nums = []
+            for j in range(len(sorted_reds) - 1):
+                if sorted_reds[j+1] - sorted_reds[j] == 1:
+                    consecutive_nums.extend([sorted_reds[j], sorted_reds[j+1]])
+            consecutive_nums = set(consecutive_nums)
+            
+            # 判断冷号（近10期未出现）- 黄底绿色
+            cold_nums = set(reds) - recent_nums
+            
+            # 构建红球显示 - 使用HTML颜色标识
+            # 重复：灰底橙色 | 连续：黄底黑字 | 冷号：黄底绿字 | 普通：红底白字
+            red_html = ''
+            for num in reds:
+                if num in duplicate_nums:
+                    red_html += f'<span style="background:#888; color:#fff; padding:2px 5px; border-radius:3px; margin:1px; display:inline-block;">{num:02d}</span> '
+                elif num in consecutive_nums:
+                    red_html += f'<span style="background:#ffeb3b; color:#000; padding:2px 5px; border-radius:3px; margin:1px; display:inline-block;">{num:02d}</span> '
+                elif num in cold_nums:
+                    red_html += f'<span style="background:#8bc34a; color:#000; padding:2px 5px; border-radius:3px; margin:1px; display:inline-block;">{num:02d}</span> '
+                else:
+                    red_html += f'<span style="background:#f44336; color:#fff; padding:2px 5px; border-radius:3px; margin:1px; display:inline-block;">{num:02d}</span> '
+            
+            blue_html = f'<span style="background:#2196f3; color:#fff; padding:2px 6px; border-radius:3px;">{blue:02d}</span>'
+            
             table_rows.append({
                 'period': str(r[0]),
-                'reds': reds,
-                'blue': f"{r[7]:02d}",
+                'reds': red_html,
+                'blue': blue_html,
                 'date': str(r[8])
             })
 
-        if page_state['history_table'] is not None:
-            page_state['history_table'].rows = table_rows
+        # 使用HTML卡片展示
+        if page_state.get('history_container') is not None:
+            page_state['history_container'].clear()
+            with page_state['history_container']:
+                for row in table_rows[:50]:  # 显示前50条
+                    with ui.card().classes('q-pa-sm q-mb-xs'):
+                        with ui.row().classes('w-full items-center'):
+                            ui.label(row['period']).classes('text-body2 text-weight-bold q-mr-md')
+                            ui.html(row['reds']).classes('q-mr-md')
+                            ui.html(row['blue']).classes('q-mr-sm')
+                            ui.label(row['date']).classes('text-caption text-grey')
+        
         if page_state['total_count'] is not None:
             page_state['total_count'].text = f'总计: {len(table_rows)} 条'
         if page_state['last_update'] is not None:
@@ -450,58 +580,66 @@ def main_page():
         ui.label('数据库状态').classes('text-subtitle2 q-mt-md text-grey')
         page_state['db_status'] = ui.label('检查中...').classes('text-caption')
 
-        ui.separator()
+        # ===== 紧凑的左侧控制面板 =====
+        with ui.card().classes('w-full q-pa-md'):
+            ui.markdown('### 控制面板').classes('text-subtitle1 text-weight-bold q-mb-sm')
+            
+            # 数据库状态
+            with ui.row().classes('w-full items-center q-mb-sm'):
+                page_state['db_status'].classes('text-caption')
+            
+            # 爬取按钮
+            async def do_crawl():
+                try:
+                    data_list, error = await crawl_latest_data()
+                    if data_list:
+                        saved = await save_to_database(data_list)
+                        ui.notify(f'成功获取 {len(data_list)} 期，保存 {saved} 条', type='positive')
+                        do_check_db()
+                        do_load_history_data('all')
+                    else:
+                        ui.notify(f'爬取失败: {error}', type='negative')
+                except Exception as e:
+                    ui.notify(f'错误: {e}', type='negative')
 
-        ui.label('数据爬取').classes('text-subtitle2 q-mt-md')
+            ui.button('🔄 爬取最新数据', on_click=do_crawl, color='primary').props('outline dense').classes('w-full q-mb-md')
 
-        async def do_crawl():
-            try:
-                data_list, error = await crawl_latest_data()
-                if data_list:
-                    saved = await save_to_database(data_list)
-                    ui.notify(f'成功获取 {len(data_list)} 期，保存 {saved} 条', type='positive')
-                    do_check_db()
-                    do_load_history_data('all')
-                else:
-                    ui.notify(f'爬取失败: {error}', type='negative')
-            except Exception as e:
-                ui.notify(f'错误: {e}', type='negative')
+            # 预测参数 - 紧凑布局
+            ui.markdown('### 预测参数').classes('text-subtitle2 q-mb-xs')
+            
+            with ui.grid(columns=2).classes('w-full q-gutter-xs q-mb-md'):
+                with ui.column().classes('q-gutter-xs'):
+                    ui.label('红球胆码').classes('text-caption')
+                    n_dan_red_input = ui.number(value=config['n_dan_red'], min=1, max=6, step=1).props('dense outlined')
+                
+                with ui.column().classes('q-gutter-xs'):
+                    ui.label('红球热拖').classes('text-caption')
+                    n_tuo_hot_input = ui.number(value=config['n_tuo_hot'], min=1, max=6, step=1).props('dense outlined')
+                
+                with ui.column().classes('q-gutter-xs'):
+                    ui.label('红球冷拖').classes('text-caption')
+                    n_tuo_cold_input = ui.number(value=config['n_tuo_cold'], min=0, max=6, step=1).props('dense outlined')
+                
+                with ui.column().classes('q-gutter-xs'):
+                    ui.label('预测组数').classes('text-caption')
+                    n_predictions_input = ui.number(value=config['n_predictions'], min=1, max=10, step=1).props('dense outlined')
 
-        ui.button('爬取最新数据', on_click=do_crawl, color='primary').classes('full-width q-mt-sm')
-        ui.label('获取最新5期开奖数据').classes('text-caption text-grey')
-
-        ui.separator()
-
-        ui.label('预测参数').classes('text-subtitle2 q-mt-md')
-
-        with ui.column().classes('q-gutter-y-sm q-mt-sm'):
-            ui.label('红球胆码数:').classes('text-caption')
-            n_dan_red_input = ui.number(value=config['n_dan_red'], min=1, max=6, step=1).props('dense outlined')
-
-            ui.label('红球热拖数:').classes('text-caption')
-            n_tuo_hot_input = ui.number(value=config['n_tuo_hot'], min=1, max=6, step=1).props('dense outlined')
-
-            ui.label('红球冷拖数:').classes('text-caption')
-            n_tuo_cold_input = ui.number(value=config['n_tuo_cold'], min=0, max=6, step=1).props('dense outlined')
-
-            ui.label('预测组数:').classes('text-caption')
-            n_predictions_input = ui.number(value=config['n_predictions'], min=1, max=10, step=1).props(
-                'dense outlined')
-
-        ui.separator()
-
-        ui.label('开始预测').classes('text-subtitle2 q-mt-md')
-        predict_btn = ui.button('开始预测', color='positive').classes('full-width q-mt-sm')
-        predict_status = ui.label('就绪').classes('text-caption text-center q-mt-sm')
+            # 开始预测按钮
+            predict_btn = ui.button('🎯 开始预测', color='positive', icon='auto_awesome').props('dense').classes('w-full')
+            predict_status = ui.label('就绪').classes('text-caption text-center')
 
     # ========== 主内容区域 ==========
     with ui.column().classes('q-pa-md full-width'):
-        ui.label('双色球胆拖投注预测系统').classes('text-h4 text-weight-bold q-mb-md')
-
-        with ui.tabs().classes('w-full') as page_state['tabs']:
-            ui.tab('预测结果').props('name=result')
-            ui.tab('图表分析').props('name=chart')
-            ui.tab('历史数据').props('name=history')
+        # 顶部标题栏
+        with ui.row().classes('w-full items-center q-mb-md'):
+            ui.icon('casino', size='40px', color='red').classes('q-mr-md')
+            ui.markdown('# 双色球预测系统').classes('text-h4 text-weight-bold text-primary')
+        
+        # 固定顶部导航栏
+        with ui.tabs().classes('w-full q-mb-md') as page_state['tabs']:
+            ui.tab('🎯 预测结果').props('name=result')
+            ui.tab('📊 图表分析').props('name=chart')  
+            ui.tab('📋 历史数据').props('name=history')
 
         with ui.tab_panels(page_state['tabs'], value='result').classes('w-full'):
             # ========== 预测结果面板 ==========
@@ -527,22 +665,23 @@ def main_page():
             # ========== 图表分析面板 ==========
             with ui.tab_panel('chart'):
                 with ui.column().classes('w-full q-gutter-md'):
-                    ui.markdown('## 图表分析')
-
-                    with ui.row().classes('w-full items-center'):
-                        ui.label('选择图表:').classes('text-subtitle2')
-                        page_state['chart_select'] = ui.select(
-                            ['综合分析图', '拟合曲线图', '红球热力图', '蓝球雷达图'],
-                            value='综合分析图'
-                        ).classes('col-grow')
-
-                        ui.button('打开文件夹', on_click=lambda: os.startfile(OUTPUT_DIR),
-                                  color='secondary').props('outline')
-
-                    page_state['chart_container'] = ui.column().classes('w-full items-center q-mt-md')
-                    with page_state['chart_container']:
-                        ui.icon('insert_chart', size='100px').classes('text-grey-5 q-mt-lg')
-                        ui.label('请先运行预测生成图表').classes('text-h6 text-grey-6 q-mt-md')
+                    # 按钮栏
+                    with ui.row().classes('w-full items-center q-mb-md'):
+                        ui.button('📈 数据报告', on_click=lambda: show_analysis_report(), color='primary').props('outline dense')
+                        ui.button('📁 打开文件夹', on_click=lambda: os.startfile(OUTPUT_DIR), color='grey').props('outline dense')
+                        ui.button('🔄 刷新图表', on_click=lambda: show_all_charts(), color='secondary').props('outline dense')
+                    
+                    # 数据分析报告区域
+                    page_state['analysis_container'] = ui.column().classes('w-full')
+                    
+                    # 图表瀑布流展示
+                    ui.separator()
+                    ui.markdown('### 📊 图表瀑布流').classes('text-subtitle1')
+                    page_state['charts_waterfall'] = ui.column().classes('w-full')
+                    
+                    # 默认显示
+                    ui.timer(0.2, lambda: show_analysis_report(), once=True)
+                    ui.timer(0.3, lambda: show_all_charts(), once=True)
 
             # ========== 历史数据面板 ==========
             with ui.tab_panel('history'):
@@ -566,20 +705,20 @@ def main_page():
                         page_state['total_count'] = ui.label('总计: 0 条').classes('text-subtitle2 text-primary')
                         page_state['last_update'] = ui.label('更新: -').classes('text-caption text-grey')
 
-                    page_state['history_table'] = ui.table(
-                        columns=[
-                            {'name': 'period', 'label': '期号', 'field': 'period', 'align': 'center', 'sortable': True},
-                            {'name': 'reds', 'label': '红球', 'field': 'reds', 'align': 'center'},
-                            {'name': 'blue', 'label': '蓝球', 'field': 'blue', 'align': 'center'},
-                            {'name': 'date', 'label': '开奖日期', 'field': 'date', 'align': 'center', 'sortable': True},
-                        ],
-                        rows=[],
-                        row_key='period',
-                        pagination={'rowsPerPage': 20, 'rowsPerPageOptions': [10, 20, 50, 100, 200, 500, 1000]}
-                    ).classes('w-full').props('dense')
+                    # 图例说明
+                    with ui.row().classes('w-full q-mb-sm text-caption'):
+                        ui.label('🔴红球普通 ').classes('text-caption')
+                        ui.label('🔴重复 ').classes('text-caption')
+                        ui.label('🟡连续 ').classes('text-caption')
+                        ui.label('🟢冷号').classes('text-caption')
+
+                    # 历史数据展示 - 使用HTML卡片
+                    page_state['history_container'] = ui.column().classes('w-full')
 
     # ============== 图表显示函数 ==============
     def show_chart(chart_name):
+        if page_state.get('chart_container') is None:
+            return
         chart_map = {
             '综合分析图': 'dan_tuo_pools.png',
             '拟合曲线图': 'fitting_curve.png',
@@ -607,91 +746,235 @@ def main_page():
                 ui.icon('error', size='50px').classes('text-red q-mt-lg')
                 ui.label('图片加载失败').classes('text-h6 text-grey-6')
 
-    page_state['chart_select'].on_value_change(lambda value: show_chart(value))
+    # ============== 瀑布流显示所有图表 ==============
+    def show_all_charts():
+        """瀑布流展示所有图表"""
+        chart_list = [
+            ('dan_tuo_pools.png', '综合分析图', '📊'),
+            ('fitting_curve.png', '拟合曲线图', '📈'),
+            ('red_heatmap.png', '红球热力图', '🔥'),
+            ('blue_radar.png', '蓝球雷达图', '🎯')
+        ]
+        
+        page_state['charts_waterfall'].clear()
+        
+        with page_state['charts_waterfall']:
+            # 瀑布流网格 - 每行2个，更大更美观
+            with ui.grid(columns=2).classes('w-full q-gutter-lg'):
+                for chart_file, chart_title, icon in chart_list:
+                    chart_path = os.path.join(OUTPUT_DIR, chart_file)
+                    
+                    # 更美观的卡片样式
+                    with ui.card().classes('w-full q-pa-md'):
+                        # 卡片头部
+                        with ui.row().classes('w-full items-center q-mb-md'):
+                            ui.label(f'{icon}').classes('text-h5 q-mr-sm')
+                            ui.markdown(f'**{chart_title}**').classes('text-h6 text-primary')
+                        
+                        if os.path.exists(chart_path):
+                            img_src = image_to_base64(chart_path)
+                            if img_src:
+                                ui.image(img_src).classes('w-full rounded-borders')
+                            else:
+                                with ui.row().classes('items-center justify-center'):
+                                    ui.icon('error', size='50px').classes('text-red')
+                                    ui.label('加载失败').classes('text-caption text-grey q-ml-sm')
+                        else:
+                            with ui.column().classes('items-center justify-center q-py-lg'):
+                                ui.icon('image_not_supported', size='60px').classes('text-grey-5')
+                                ui.label('图表未生成').classes('text-body2 text-grey q-mt-sm')
+                                ui.label('请先运行预测').classes('text-caption text-grey-6')
+
+    # ============== 数据分析报告函数 ==============
+    def show_analysis_report():
+        """显示数据分析报告"""
+        analysis_result = analyze_lottery_data()
+        
+        page_state['analysis_container'].clear()
+        
+        if not analysis_result:
+            with page_state['analysis_container']:
+                ui.markdown("## 数据不足，无法分析")
+            return
+        
+        with page_state['analysis_container']:
+            with ui.scroll_area().classes('w-full'):
+                with ui.column().classes('w-full q-gutter-md q-pa-md'):
+                    # 标题
+                    ui.markdown('# 数据分析报告').classes('text-h4 text-weight-bold text-primary')
+                    ui.markdown(f'**数据来源**: 数据库 ({analysis_result["total_records"]} 条历史记录)')
+                    
+                    ui.separator()
+                    
+                    # 算法依据
+                    ui.markdown('## 算法依据').classes('text-h5 text-weight-bold')
+                    
+                    with ui.card().classes('q-pa-md bg-grey-1'):
+                        ui.markdown('''
+                        ### 预测算法：蒙特卡洛采样 + 精英选择
+                        
+                        | 算法组件 | 权重 | 说明 |
+                        |---------|------|------|
+                        | 核密度估计(KDE) | 30% | 拟合红球概率分布 |
+                        | Beta分布 | 25% | 拟合边界分布 |
+                        | 三峰高斯混合 | 25% | 捕捉多峰特征 |
+                        | 历史频率 | 20% | 统计出现频率 |
+                        
+                        ### 胆拖策略
+                        - **红球**: 4胆码 + 3热拖 + 2冷拖
+                        - **蓝球**: 1胆码 + 2拖码
+                        ''')
+                    
+                    # 红球分析
+                    ui.markdown('## 红球分析').classes('text-h5 text-weight-bold q-mt-md')
+                    
+                    with ui.row().classes('w-full q-gutter-md'):
+                        with ui.card().classes('col q-pa-md'):
+                            ui.markdown('### 热号 TOP10').classes('text-subtitle1 text-weight-bold text-red')
+                            with ui.grid(columns=5).classes('q-gutter-xs'):
+                                for n in analysis_result['red_hot']:
+                                    ui.badge(f'{n:02d}', color='red-5', text_color='white')
+                        
+                        with ui.card().classes('col q-pa-md'):
+                            ui.markdown('### 冷号 TOP10').classes('text-subtitle1 text-weight-bold text-blue')
+                            with ui.grid(columns=5).classes('q-gutter-xs'):
+                                for n in analysis_result['red_cold']:
+                                    ui.badge(f'{n:02d}', color='blue-3', text_color='white')
+                    
+                    # 蓝球分析
+                    ui.markdown('## 蓝球分析').classes('text-h5 text-weight-bold q-mt-md')
+                    
+                    with ui.row().classes('w-full q-gutter-md'):
+                        with ui.card().classes('col q-pa-md'):
+                            ui.markdown('### 热号 TOP5').classes('text-subtitle1 text-weight-bold text-blue')
+                            with ui.grid(columns=5).classes('q-gutter-xs'):
+                                for n in analysis_result['blue_hot']:
+                                    ui.badge(f'{n:02d}', color='blue-5', text_color='white')
+                        
+                        with ui.card().classes('col q-pa-md'):
+                            ui.markdown('### 冷号 TOP5').classes('text-subtitle1 text-weight-bold')
+                            with ui.grid(columns=5).classes('q-gutter-xs'):
+                                for n in analysis_result['blue_cold']:
+                                    ui.badge(f'{n:02d}', color='grey-4')
+                    
+                    # 统计特征
+                    ui.markdown('## 统计特征').classes('text-h5 text-weight-bold q-mt-md')
+                    
+                    with ui.row().classes('w-full q-gutter-md'):
+                        with ui.card().classes('col q-pa-md'):
+                            ui.markdown('### 连号概率').classes('text-subtitle1')
+                            ui.label(f'{analysis_result["consecutive_ratio"]*100:.1f}%').classes('text-h4 text-primary')
+                        
+                        with ui.card().classes('col q-pa-md'):
+                            ui.markdown('### 区间分布').classes('text-subtitle1')
+                            for r, c in analysis_result['range_stats'].items():
+                                total = sum(analysis_result['range_stats'].values())
+                                ui.label(f'{r}: {c/total*100:.1f}%').classes('text-body1')
+                    
+                    # 奇偶比例
+                    ui.markdown('## 奇偶比例').classes('text-h5 text-weight-bold q-mt-md')
+                    sorted_oe = sorted(analysis_result['odd_even_stats'].items(), key=lambda x: -x[1])[:6]
+                    for ratio, count in sorted_oe:
+                        pct = count / analysis_result['total_records'] * 100
+                        with ui.row().classes('items-center w-full'):
+                            ui.label(ratio).classes('text-body1 text-weight-bold')
+                            ui.linear_progress(value=pct/100, color='red-5').props('size=10px').classes('col')
+                            ui.label(f'{pct:.1f}%').classes('text-caption q-ml-sm')
+                    
+                    # 红球频率表
+                    ui.markdown('## 红球频率明细').classes('text-h5 text-weight-bold q-mt-md')
+                    red_rows = [{'number': k, 'count': v, 'percent': round(v/(analysis_result['total_records']*6)*100, 2)} 
+                                for k, v in sorted(analysis_result['red_freq'].items(), key=lambda x: -x[1])]
+                    ui.table(
+                        columns=[
+                            {'name': 'number', 'label': '号码', 'field': 'number', 'align': 'center'},
+                            {'name': 'count', 'label': '出现次数', 'field': 'count', 'align': 'center'},
+                            {'name': 'percent', 'label': '概率%', 'field': 'percent', 'align': 'center'},
+                        ],
+                        rows=red_rows,
+                        row_key='number',
+                        pagination={'rowsPerPage': 15}
+                    ).classes('w-full')
+                    
+                    # 蓝球频率表
+                    ui.markdown('## 蓝球频率明细').classes('text-h5 text-weight-bold q-mt-md')
+                    blue_rows = [{'number': k, 'count': v, 'percent': round(v/analysis_result['total_records']*100, 2)} 
+                                 for k, v in sorted(analysis_result['blue_freq'].items(), key=lambda x: -x[1])]
+                    ui.table(
+                        columns=[
+                            {'name': 'number', 'label': '号码', 'field': 'number', 'align': 'center'},
+                            {'name': 'count', 'label': '出现次数', 'field': 'count', 'align': 'center'},
+                            {'name': 'percent', 'label': '概率%', 'field': 'percent', 'align': 'center'},
+                        ],
+                        rows=blue_rows,
+                        row_key='number',
+                        pagination={'rowsPerPage': 16}
+                    ).classes('w-full')
 
     # ============== 更新预测结果函数 ==============
     def update_prediction_result(predictions, df, red_probs, blue_probs):
         page_state['result_container'].clear()
 
         with page_state['result_container']:
-            ui.markdown(f'### 生成时间: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
-            ui.markdown(f'数据来源: 数据库 ({len(df)} 条历史记录)')
-            ui.markdown(f'预测组数: {len(predictions)} 组')
-            ui.markdown('---')
-
-            ui.markdown('## 预测号码')
+            # 简洁标题
+            with ui.row().classes('w-full items-center q-mb-sm'):
+                ui.icon('auto_awesome', color='primary').classes('text-h5 q-mr-sm')
+                ui.markdown(f'### 预测结果').classes('text-h6')
+                ui.label(f'({len(df)}条数据)').classes('text-caption text-grey')
 
             # 按综合期望值排序
             sorted_predictions = sorted(predictions,
                                         key=lambda p: p['total_red_prob'] + p['total_blue_prob'],
                                         reverse=True)
 
-            for pred in sorted_predictions:
-                with ui.card().classes('q-mb-md'):
-                    with ui.column().classes('q-pa-md'):
-                        rank = sorted_predictions.index(pred) + 1
-                        ui.markdown(f'#### 预测 {pred["group"]} (排名 #{rank})')
-
-                        # 红球胆码
-                        with ui.row().classes('items-center q-mt-sm'):
-                            ui.label('红球胆码: ').classes('text-weight-medium')
+            # 紧凑卡片网格 - 每行2个预测，无边距
+            with ui.grid(columns=2).classes('w-full q-gutter-sm q-mb-md'):
+                for idx, pred in enumerate(sorted_predictions):
+                    rank = sorted_predictions.index(pred) + 1
+                    
+                    with ui.card().classes('q-pa-sm'):
+                        # 紧凑头部
+                        with ui.row().classes('w-full items-center justify-between q-mb-xs'):
+                            ui.markdown(f'**{pred["group"]}**').classes('text-body2')
+                            ui.badge(f'#{rank}', color='primary' if rank == 1 else 'grey').props('size=sm')
+                        
+                        # 红球胆拖 - 一行显示
+                        with ui.row().classes('items-center'):
                             for n in pred["red_dan"]:
-                                ui.badge(f'{n:02d}', color='red-5', text_color='white').classes('q-mr-xs')
-
-                        # 红球拖码
-                        with ui.row().classes('items-center q-mt-sm'):
-                            ui.label('红球拖码: ').classes('text-weight-medium')
-                            for n in pred["red_tuo"]:
-                                ui.badge(f'{n:02d}', color='orange-3', text_color='white').classes('q-mr-xs')
-
-                        # 蓝球胆码
-                        with ui.row().classes('items-center q-mt-sm'):
-                            ui.label('蓝球胆码: ').classes('text-weight-medium')
+                                ui.badge(f'{n:02d}', color='red-5', text_color='white').props('size=sm')
+                            ui.label('/').classes('text-caption text-grey q-mx-xs')
                             for n in pred["blue_dan"]:
-                                ui.badge(f'{n:02d}', color='blue', text_color='white').classes('q-mr-xs')
-
-                        # 蓝球拖码
-                        with ui.row().classes('items-center q-mt-sm'):
-                            ui.label('蓝球拖码: ').classes('text-weight-medium')
-                            for n in pred["blue_tuo"]:
-                                ui.badge(f'{n:02d}', color='light-blue', text_color='white').classes('q-mr-xs')
-
-                        # 期望命中 - 使用 ui.row() 和 ui.label() 替代 HTML
+                                ui.badge(f'{n:02d}', color='blue', text_color='white').props('size=sm')
+                            if pred["blue_tuo"]:
+                                ui.label('/').classes('text-caption text-grey q-mx-xs')
+                                for n in pred["blue_tuo"]:
+                                    ui.badge(f'{n:02d}', color='light-blue-4', text_color='white').props('size=sm')
+                        
+                        # 期望值
                         total_prob = pred['total_red_prob'] + pred['total_blue_prob']
-                        with ui.row().classes('items-center q-mt-md'):
-                            ui.label(f'综合期望: ').classes('text-weight-bold')
-                            ui.label(f'{total_prob:.4f} ').classes('text-h6 text-primary')
-                            ui.label(
-                                f'(红球 {pred["total_red_prob"]:.4f} + 蓝球 {pred["total_blue_prob"]:.4f})').classes(
-                                'text-caption')
+                        ui.label(f'期望: {total_prob:.3f}').classes('text-caption text-primary q-mt-xs')
 
-            ui.markdown('---')
-
-            ui.markdown('## 概率排名')
-
-            with ui.row().classes('w-full q-gutter-lg'):
-                with ui.column().classes('col'):
-                    ui.markdown('### 红球 TOP10')
-                    for i, (num, prob) in enumerate(select_hot(red_probs, 10), 1):
-                        with ui.row().classes('items-center'):
-                            ui.badge(f'{i}', color='grey').classes('q-mr-sm')
-                            ui.badge(f'{num:02d}', color='red-3').classes('q-mr-sm')
-                            ui.progress(value=prob * 200, show_value=False, color='red').props(
-                                'style="width: 120px"').classes('q-mr-sm')
-                            ui.label(f'{prob:.4f}').classes('text-caption')
-
-                with ui.column().classes('col'):
-                    ui.markdown('### 蓝球 TOP5')
-                    for i, (num, prob) in enumerate(select_hot(blue_probs, 5), 1):
-                        with ui.row().classes('items-center'):
-                            ui.badge(f'{i}', color='grey').classes('q-mr-sm')
-                            ui.badge(f'{num:02d}', color='blue').classes('q-mr-sm')
-                            ui.progress(value=prob * 400, show_value=False, color='blue').props(
-                                'style="width: 120px"').classes('q-mr-sm')
-                            ui.label(f'{prob:.4f}').classes('text-caption')
-
-            ui.markdown('---')
-            ui.markdown('### 风险提示')
+            # 概率排名 - 更紧凑
+            with ui.card().classes('q-pa-sm'):
+                ui.markdown('**🎯 概率排名**').classes('text-body2 q-mb-sm')
+                
+                with ui.grid(columns=2).classes('w-full q-gutter-sm'):
+                    # 红球TOP10
+                    with ui.column().classes('q-gutter-xs'):
+                        ui.label('红球TOP10').classes('text-caption')
+                        for i, (num, prob) in enumerate(select_hot(red_probs, 10), 1):
+                            with ui.row().classes('items-center'):
+                                ui.badge(f'{num:02d}', color='red-3' if i <= 3 else 'grey-4').props('size=sm')
+                                ui.linear_progress(value=prob * 200, color='red').props('size=4px style="width: 60px"').classes('col')
+                    
+                    # 蓝球TOP5
+                    with ui.column().classes('q-gutter-xs'):
+                        ui.label('蓝球TOP5').classes('text-caption')
+                        for i, (num, prob) in enumerate(select_hot(blue_probs, 5), 1):
+                            with ui.row().classes('items-center'):
+                                ui.badge(f'{num:02d}', color='blue' if i <= 2 else 'light-blue-3').props('size=sm')
+                                ui.linear_progress(value=prob * 400, color='blue').props('size=4px style="width: 60px"').classes('col')
+                                ui.label(f'{prob:.3f}').classes('text-caption')
             ui.markdown('预测结果仅供参考，请理性购彩！')
 
         page_state['tabs'].value = 'result'
@@ -760,7 +1043,131 @@ def main_page():
         do_load_history_data('all')
 
     ui.timer(0.5, init_page, once=True)
+    
+    # 延迟3秒后自动更新数据（不阻塞页面加载）
+    async def delayed_auto_update():
+        await asyncio.sleep(3)
+        await do_auto_update()
+    
+    ui.timer(3.0, delayed_auto_update, once=True)
+
+
+# ============== 自动更新数据 ==============
+async def do_auto_update():
+    """自动检查并更新数据"""
+    try:
+        # 获取数据库最新期号
+        conn = pymysql.connect(**DB_CONFIG)
+        cursor = conn.cursor()
+        cursor.execute("SELECT MAX(CAST(period AS UNSIGNED)) FROM lottery_data")
+        db_result = cursor.fetchone()
+        db_latest = db_result[0] if db_result else 0
+        cursor.close()
+        conn.close()
+        
+        if not db_latest:
+            return
+        
+        print(f"[自动更新] 数据库最新期号: {db_latest}")
+        
+        # 在后台线程中爬取数据
+        data_list = await run.io_bound(_sync_crawl_latest)
+        
+        if not data_list:
+            print(f"[自动更新] 未能获取在线数据")
+            return
+        
+        # 获取网站最新期号
+        website_latest = max(int(row['period'][-5:]) for row in data_list if row['period'])
+        print(f"[自动更新] 网站最新期号: {website_latest}")
+        
+        if website_latest > db_latest:
+            print(f"[自动更新] 发现新数据，正在更新...")
+            saved = await run.io_bound(_sync_save_to_db, data_list)
+            print(f"[自动更新] 更新完成，新增 {saved} 条")
+            # 刷新页面数据
+            await do_load_history_data('all')
+        else:
+            print(f"[自动更新] 数据已是最新")
+            
+    except Exception as e:
+        print(f"[自动更新] 错误: {e}")
+
+
+def _sync_crawl_latest():
+    """同步爬取数据"""
+    try:
+        url = "https://datachart.500star.com/ssq/history/newinc/history.php"
+        params = {'start': '26001', 'end': '27000'}
+        
+        session = requests.Session()
+        session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Referer': 'https://datachart.500star.com/',
+        })
+        
+        response = session.get(url, params=params, timeout=30)
+        response.encoding = 'gbk'
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        tbody = soup.find('tbody', id='tdata')
+        if not tbody:
+            return None
+        
+        data_list = []
+        rows = tbody.find_all('tr')
+        for row in rows:
+            cells = row.find_all('td')
+            if len(cells) >= 16:
+                try:
+                    period = cells[0].get_text(strip=True)
+                    reds = [int(cells[i].get_text(strip=True)) for i in range(1, 7)]
+                    blue = int(cells[7].get_text(strip=True))
+                    draw_date = cells[15].get_text(strip=True)
+                    
+                    if all(1 <= r <= 33 for r in reds) and 1 <= blue <= 16:
+                        data_list.append({
+                            'period': period,
+                            'red1': reds[0], 'red2': reds[1], 'red3': reds[2],
+                            'red4': reds[3], 'red5': reds[4], 'red6': reds[5],
+                            'blue': blue,
+                            'draw_date': draw_date
+                        })
+                except:
+                    continue
+        
+        return data_list if data_list else None
+    except Exception as e:
+        print(f"爬取错误: {e}")
+        return None
+
+
+def _sync_save_to_db(data_list):
+    """同步保存到数据库"""
+    if not data_list:
+        return 0
+    conn = pymysql.connect(**DB_CONFIG)
+    cursor = conn.cursor()
+    saved_count = 0
+    for data in data_list:
+        try:
+            cursor.execute("SELECT id FROM lottery_data WHERE period = %s", (data['period'],))
+            if cursor.fetchone():
+                continue
+            cursor.execute("""
+                INSERT INTO lottery_data (period, red1, red2, red3, red4, red5, red6, blue, draw_date)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (data['period'], data['red1'], data['red2'], data['red3'],
+                  data['red4'], data['red5'], data['red6'], data['blue'], data['draw_date']))
+            saved_count += 1
+        except:
+            continue
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return saved_count
 
 
 # ============== 启动 ==============
-ui.run(host='0.0.0.0', port=8080, title='双色球预测系统', dark=True)
+if __name__ in {"__main__", "__mp_main__"}:
+    ui.run(host='0.0.0.0', port=8082, title='双色球预测系统', dark=False, reload=False)

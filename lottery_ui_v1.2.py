@@ -569,10 +569,88 @@ class LotteryApp:
     def refresh_db(self):
         ok, count, latest = check_db_status()
         if ok:
-            self.db_status.config(text="✅ 已连接", foreground="green")
+            self.db_status.config(text="已连接", foreground="green")
             self.data_count.config(text="数据量: " + str(count) + " 条 | 最新期: " + str(latest))
         else:
             self.db_status.config(text="❌ " + latest, foreground="red")
+        
+        # 自动检查并更新数据
+        self.auto_check_update()
+
+    def auto_check_update(self):
+        """自动检查并更新数据"""
+        def task():
+            try:
+                # 获取数据库最新期号
+                conn = get_db_connection()
+                cursor = conn.cursor()
+                cursor.execute(f"SELECT MAX(CAST(period AS UNSIGNED)) FROM {TABLE_NAME}")
+                db_latest = cursor.fetchone()[0]
+                cursor.close()
+                conn.close()
+                
+                if not db_latest:
+                    return
+                
+                # 爬取网站最新期号
+                print(f"[自动更新] 数据库最新期号: {db_latest}")
+                data = crawl_latest_data()
+                
+                if not data:
+                    # 尝试使用备用方法
+                    print(f"[自动更新] 尝试备用爬取方法...")
+                    data = self._backup_crawl()
+                
+                if data:
+                    website_latest = max(int(row['period']) for row in data)
+                    print(f"[自动更新] 网站最新期号: {website_latest}")
+                    
+                    if website_latest > db_latest:
+                        print(f"[自动更新] 发现新数据: {website_latest} > {db_latest}，正在更新...")
+                        new_count = save_to_db(data)
+                        print(f"[自动更新] 更新完成，新增 {new_count} 条")
+                        self.root.after(0, self.refresh_db)
+                        self.root.after(0, self.load_history)
+                    else:
+                        print(f"[自动更新] 数据已是最新")
+                else:
+                    print(f"[自动更新] 未能获取在线数据")
+                    
+            except Exception as e:
+                print(f"[自动更新] 错误: {e}")
+        
+        threading.Thread(target=task, daemon=True).start()
+
+    def _backup_crawl(self):
+        """备用爬取方法 - 使用完整的爬虫逻辑"""
+        try:
+            import Lottery_spider as spider
+            session = spider.get_session()
+            spider.visit_homepage(session)
+            
+            # 获取最新期号
+            latest_period = spider.get_latest_period(session)
+            if not latest_period:
+                return None
+            
+            # 获取数据
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT MAX(CAST(period AS UNSIGNED)) FROM {TABLE_NAME}")
+            db_latest = cursor.fetchone()[0]
+            cursor.close()
+            conn.close()
+            
+            start_period = str(db_latest + 1) if db_latest else "26001"
+            end_period = latest_period
+            
+            html = spider.fetch_data(session, start_period, end_period)
+            if html:
+                data = spider.parse_html(html)
+                return data
+        except Exception as e:
+            print(f"[备用爬取] 错误: {e}")
+        return None
 
     def sync_csv(self):
         self.crawl_status.config(text="同步中...", foreground="blue")
