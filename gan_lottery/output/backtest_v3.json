@@ -1,0 +1,6 @@
+{
+  "red_avg_hit": 1.08,
+  "hit_3plus_rate": 5.0,
+  "blue_hit_rate": 7.0,
+  "epochs": 500
+}
