@@ -1,0 +1,4835 @@
+{
+  "total_periods": 200,
+  "red_hit_counts": {
+    "0": 29,
+    "1": 74,
+    "2": 69,
+    "3": 24,
+    "4": 4,
+    "5": 0,
+    "6": 0,
+    "7": 0
+  },
+  "blue_hit_count": 89,
+  "blue_hit_rate": 44.5,
+  "combined_hit": 0,
+  "award_stats": {
+    "0": 10,
+    "1": 59,
+    "2": 75,
+    "3": 46,
+    "4": 8,
+    "5": 2,
+    "6": 0
+  },
+  "key_metrics": {
+    "red_avg_hit": 1.5,
+    "hit_3plus_rate": 14.0,
+    "hit_4plus_rate": 2.0,
+    "hit_5plus_rate": 0.0,
+    "blue_hit_rate": 44.5,
+    "comprehensive_accuracy": 58.5
+  },
+  "period_results": [
+    {
+      "period": 24133,
+      "real_red": [
+        1,
+        11,
+        15,
+        27,
+        30,
+        33
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 1,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 24134,
+      "real_red": [
+        2,
+        4,
+        13,
+        16,
+        18,
+        20
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24135,
+      "real_red": [
+        5,
+        11,
+        17,
+        18,
+        30,
+        31
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 24136,
+      "real_red": [
+        3,
+        11,
+        15,
+        21,
+        25,
+        26
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        21,
+        23
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24137,
+      "real_red": [
+        4,
+        9,
+        10,
+        19,
+        26,
+        27
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 24138,
+      "real_red": [
+        2,
+        7,
+        11,
+        21,
+        27,
+        28
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 2,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 24139,
+      "real_red": [
+        15,
+        16,
+        20,
+        22,
+        23,
+        29
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24140,
+      "real_red": [
+        4,
+        7,
+        8,
+        17,
+        22,
+        26
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24141,
+      "real_red": [
+        1,
+        2,
+        7,
+        15,
+        24,
+        29
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 24142,
+      "real_red": [
+        4,
+        6,
+        13,
+        21,
+        22,
+        25
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24143,
+      "real_red": [
+        2,
+        5,
+        11,
+        22,
+        30,
+        33
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 24144,
+      "real_red": [
+        2,
+        9,
+        11,
+        17,
+        20,
+        30
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 24145,
+      "real_red": [
+        1,
+        3,
+        16,
+        22,
+        23,
+        30
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24146,
+      "real_red": [
+        2,
+        4,
+        11,
+        22,
+        27,
+        32
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 24147,
+      "real_red": [
+        5,
+        11,
+        13,
+        16,
+        21,
+        30
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        21,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 24148,
+      "real_red": [
+        2,
+        6,
+        15,
+        16,
+        21,
+        23
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 24149,
+      "real_red": [
+        3,
+        9,
+        16,
+        17,
+        18,
+        22
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 24150,
+      "real_red": [
+        13,
+        14,
+        20,
+        22,
+        26,
+        32
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 2,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 24151,
+      "real_red": [
+        5,
+        10,
+        16,
+        19,
+        29,
+        32
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25001,
+      "real_red": [
+        2,
+        3,
+        17,
+        18,
+        22,
+        33
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25002,
+      "real_red": [
+        9,
+        12,
+        13,
+        15,
+        22,
+        26
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25003,
+      "real_red": [
+        10,
+        19,
+        20,
+        26,
+        28,
+        29
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25004,
+      "real_red": [
+        3,
+        7,
+        17,
+        27,
+        29,
+        32
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        17,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25005,
+      "real_red": [
+        10,
+        16,
+        19,
+        27,
+        28,
+        30
+      ],
+      "real_blue": 9,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 9,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25006,
+      "real_red": [
+        1,
+        7,
+        8,
+        17,
+        20,
+        22
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25007,
+      "real_red": [
+        7,
+        8,
+        14,
+        18,
+        21,
+        27
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25008,
+      "real_red": [
+        9,
+        14,
+        16,
+        17,
+        25,
+        33
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25009,
+      "real_red": [
+        2,
+        4,
+        11,
+        12,
+        23,
+        25
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25010,
+      "real_red": [
+        4,
+        6,
+        7,
+        16,
+        17,
+        21
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25011,
+      "real_red": [
+        6,
+        13,
+        17,
+        22,
+        24,
+        29
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25012,
+      "real_red": [
+        7,
+        11,
+        13,
+        18,
+        27,
+        31
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25013,
+      "real_red": [
+        4,
+        14,
+        16,
+        23,
+        24,
+        30
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        28
+      ],
+      "pred_blue": 12,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25014,
+      "real_red": [
+        6,
+        7,
+        9,
+        13,
+        21,
+        27
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        18,
+        20,
+        21,
+        23,
+        24
+      ],
+      "pred_blue": 9,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25015,
+      "real_red": [
+        4,
+        11,
+        15,
+        24,
+        25,
+        33
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25016,
+      "real_red": [
+        2,
+        3,
+        12,
+        16,
+        20,
+        29
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25017,
+      "real_red": [
+        4,
+        12,
+        15,
+        18,
+        28,
+        29
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25018,
+      "real_red": [
+        3,
+        9,
+        18,
+        21,
+        28,
+        29
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        21,
+        23
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25019,
+      "real_red": [
+        5,
+        13,
+        17,
+        18,
+        22,
+        23
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25020,
+      "real_red": [
+        4,
+        11,
+        13,
+        16,
+        26,
+        30
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        11,
+        14,
+        18,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25021,
+      "real_red": [
+        7,
+        8,
+        16,
+        18,
+        25,
+        32
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25022,
+      "real_red": [
+        11,
+        17,
+        18,
+        20,
+        28,
+        30
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 3,
+      "blue_hit": true,
+      "level": "五等奖"
+    },
+    {
+      "period": 25023,
+      "real_red": [
+        9,
+        12,
+        13,
+        24,
+        25,
+        33
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 9,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25024,
+      "real_red": [
+        10,
+        11,
+        22,
+        27,
+        30,
+        32
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        18,
+        20,
+        27,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25025,
+      "real_red": [
+        12,
+        15,
+        21,
+        23,
+        25,
+        30
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 2,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25026,
+      "real_red": [
+        9,
+        10,
+        12,
+        14,
+        19,
+        32
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25027,
+      "real_red": [
+        5,
+        7,
+        8,
+        15,
+        16,
+        23
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25028,
+      "real_red": [
+        4,
+        9,
+        14,
+        15,
+        18,
+        25
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 9,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25029,
+      "real_red": [
+        5,
+        15,
+        16,
+        25,
+        30,
+        33
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25030,
+      "real_red": [
+        4,
+        6,
+        7,
+        30,
+        31,
+        33
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25031,
+      "real_red": [
+        1,
+        5,
+        6,
+        8,
+        23,
+        28
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25032,
+      "real_red": [
+        3,
+        8,
+        10,
+        14,
+        16,
+        21
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        21,
+        23
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25033,
+      "real_red": [
+        3,
+        5,
+        18,
+        25,
+        26,
+        33
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        17,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25034,
+      "real_red": [
+        5,
+        8,
+        13,
+        14,
+        24,
+        26
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25035,
+      "real_red": [
+        1,
+        8,
+        16,
+        18,
+        25,
+        31
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25036,
+      "real_red": [
+        5,
+        11,
+        13,
+        16,
+        19,
+        32
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25037,
+      "real_red": [
+        3,
+        6,
+        11,
+        20,
+        21,
+        31
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25038,
+      "real_red": [
+        6,
+        19,
+        20,
+        23,
+        26,
+        33
+      ],
+      "real_blue": 9,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25039,
+      "real_red": [
+        8,
+        10,
+        12,
+        15,
+        17,
+        23
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25040,
+      "real_red": [
+        2,
+        6,
+        8,
+        9,
+        10,
+        24
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25041,
+      "real_red": [
+        6,
+        10,
+        17,
+        19,
+        25,
+        31
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25042,
+      "real_red": [
+        7,
+        13,
+        19,
+        23,
+        27,
+        33
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25043,
+      "real_red": [
+        3,
+        12,
+        16,
+        19,
+        20,
+        32
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25044,
+      "real_red": [
+        2,
+        3,
+        7,
+        8,
+        14,
+        28
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25045,
+      "real_red": [
+        2,
+        14,
+        19,
+        24,
+        29,
+        33
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 3,
+      "blue_hit": true,
+      "level": "五等奖"
+    },
+    {
+      "period": 25046,
+      "real_red": [
+        2,
+        3,
+        10,
+        16,
+        29,
+        33
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25047,
+      "real_red": [
+        1,
+        14,
+        21,
+        22,
+        23,
+        31
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25048,
+      "real_red": [
+        16,
+        21,
+        22,
+        23,
+        27,
+        31
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25049,
+      "real_red": [
+        3,
+        6,
+        19,
+        27,
+        29,
+        33
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25050,
+      "real_red": [
+        9,
+        12,
+        15,
+        18,
+        22,
+        33
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25051,
+      "real_red": [
+        1,
+        2,
+        3,
+        4,
+        17,
+        22
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25052,
+      "real_red": [
+        6,
+        7,
+        10,
+        17,
+        20,
+        26
+      ],
+      "real_blue": 9,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25053,
+      "real_red": [
+        6,
+        9,
+        10,
+        13,
+        30,
+        33
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        18,
+        20,
+        24,
+        30,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25054,
+      "real_red": [
+        5,
+        7,
+        10,
+        21,
+        24,
+        27
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25055,
+      "real_red": [
+        2,
+        5,
+        22,
+        27,
+        29,
+        33
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        23,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25056,
+      "real_red": [
+        1,
+        2,
+        10,
+        14,
+        28,
+        31
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25057,
+      "real_red": [
+        4,
+        9,
+        15,
+        16,
+        25,
+        30
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 14,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25058,
+      "real_red": [
+        2,
+        6,
+        7,
+        9,
+        10,
+        20
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25059,
+      "real_red": [
+        4,
+        10,
+        11,
+        12,
+        13,
+        24
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25060,
+      "real_red": [
+        6,
+        14,
+        18,
+        25,
+        28,
+        30
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25061,
+      "real_red": [
+        6,
+        7,
+        9,
+        10,
+        11,
+        32
+      ],
+      "real_blue": 9,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 9,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25062,
+      "real_red": [
+        6,
+        8,
+        9,
+        13,
+        25,
+        31
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25063,
+      "real_red": [
+        2,
+        19,
+        21,
+        22,
+        28,
+        30
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25064,
+      "real_red": [
+        2,
+        10,
+        13,
+        22,
+        29,
+        33
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25065,
+      "real_red": [
+        6,
+        10,
+        13,
+        14,
+        15,
+        20
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25066,
+      "real_red": [
+        6,
+        22,
+        24,
+        27,
+        28,
+        30
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        18,
+        23,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25067,
+      "real_red": [
+        1,
+        5,
+        10,
+        17,
+        20,
+        22
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25068,
+      "real_red": [
+        5,
+        7,
+        8,
+        19,
+        20,
+        31
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25069,
+      "real_red": [
+        2,
+        4,
+        19,
+        23,
+        27,
+        30
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25070,
+      "real_red": [
+        2,
+        3,
+        15,
+        21,
+        22,
+        33
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 9,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25071,
+      "real_red": [
+        1,
+        12,
+        18,
+        23,
+        25,
+        28
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25072,
+      "real_red": [
+        2,
+        14,
+        17,
+        25,
+        27,
+        29
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25073,
+      "real_red": [
+        2,
+        7,
+        10,
+        27,
+        30,
+        33
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25074,
+      "real_red": [
+        3,
+        4,
+        12,
+        20,
+        32,
+        33
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25075,
+      "real_red": [
+        10,
+        12,
+        14,
+        19,
+        20,
+        21
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25076,
+      "real_red": [
+        2,
+        6,
+        9,
+        12,
+        14,
+        30
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25077,
+      "real_red": [
+        4,
+        7,
+        8,
+        15,
+        20,
+        21
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        28,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25078,
+      "real_red": [
+        6,
+        15,
+        17,
+        30,
+        32,
+        33
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25079,
+      "real_red": [
+        8,
+        11,
+        14,
+        15,
+        30,
+        32
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25080,
+      "real_red": [
+        3,
+        7,
+        8,
+        10,
+        16,
+        19
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25081,
+      "real_red": [
+        3,
+        6,
+        18,
+        20,
+        23,
+        28
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 4,
+      "blue_hit": false,
+      "level": "五等奖"
+    },
+    {
+      "period": 25082,
+      "real_red": [
+        4,
+        6,
+        9,
+        14,
+        32,
+        33
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25083,
+      "real_red": [
+        10,
+        15,
+        16,
+        17,
+        27,
+        29
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25084,
+      "real_red": [
+        6,
+        8,
+        10,
+        14,
+        24,
+        33
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25085,
+      "real_red": [
+        11,
+        14,
+        15,
+        18,
+        21,
+        24
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 3,
+      "blue_hit": true,
+      "level": "五等奖"
+    },
+    {
+      "period": 25086,
+      "real_red": [
+        2,
+        6,
+        8,
+        10,
+        17,
+        24
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25087,
+      "real_red": [
+        2,
+        6,
+        14,
+        15,
+        24,
+        26
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25088,
+      "real_red": [
+        1,
+        3,
+        13,
+        18,
+        21,
+        25
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25089,
+      "real_red": [
+        4,
+        6,
+        8,
+        18,
+        31,
+        33
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25090,
+      "real_red": [
+        6,
+        11,
+        12,
+        21,
+        27,
+        28
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25091,
+      "real_red": [
+        3,
+        4,
+        17,
+        19,
+        25,
+        27
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25092,
+      "real_red": [
+        2,
+        11,
+        14,
+        17,
+        23,
+        24
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        17,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 4,
+      "blue_hit": true,
+      "level": "四等奖"
+    },
+    {
+      "period": 25093,
+      "real_red": [
+        9,
+        11,
+        12,
+        24,
+        25,
+        26
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25094,
+      "real_red": [
+        11,
+        13,
+        17,
+        19,
+        23,
+        29
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25095,
+      "real_red": [
+        15,
+        16,
+        22,
+        23,
+        26,
+        32
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25096,
+      "real_red": [
+        7,
+        9,
+        11,
+        12,
+        16,
+        29
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25097,
+      "real_red": [
+        3,
+        5,
+        16,
+        23,
+        26,
+        31
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 2,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25098,
+      "real_red": [
+        5,
+        8,
+        13,
+        17,
+        18,
+        29
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25099,
+      "real_red": [
+        9,
+        11,
+        15,
+        17,
+        22,
+        26
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25100,
+      "real_red": [
+        12,
+        16,
+        17,
+        25,
+        30,
+        31
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25101,
+      "real_red": [
+        5,
+        8,
+        9,
+        10,
+        16,
+        21
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25102,
+      "real_red": [
+        4,
+        9,
+        16,
+        17,
+        18,
+        31
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25103,
+      "real_red": [
+        13,
+        16,
+        21,
+        25,
+        28,
+        31
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        28,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25104,
+      "real_red": [
+        2,
+        5,
+        15,
+        16,
+        24,
+        32
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25105,
+      "real_red": [
+        4,
+        7,
+        18,
+        24,
+        26,
+        28
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        28
+      ],
+      "pred_blue": 12,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25106,
+      "real_red": [
+        4,
+        5,
+        17,
+        22,
+        26,
+        30
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25107,
+      "real_red": [
+        2,
+        3,
+        10,
+        15,
+        25,
+        33
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25108,
+      "real_red": [
+        1,
+        9,
+        14,
+        17,
+        22,
+        33
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25109,
+      "real_red": [
+        5,
+        6,
+        9,
+        17,
+        18,
+        31
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25110,
+      "real_red": [
+        1,
+        5,
+        11,
+        14,
+        16,
+        19
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25111,
+      "real_red": [
+        9,
+        14,
+        18,
+        28,
+        31,
+        33
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        23,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 4,
+      "blue_hit": true,
+      "level": "四等奖"
+    },
+    {
+      "period": 25112,
+      "real_red": [
+        3,
+        9,
+        11,
+        13,
+        20,
+        32
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25113,
+      "real_red": [
+        8,
+        10,
+        13,
+        15,
+        24,
+        31
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        28
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25114,
+      "real_red": [
+        1,
+        20,
+        21,
+        25,
+        26,
+        27
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25115,
+      "real_red": [
+        2,
+        3,
+        8,
+        19,
+        24,
+        30
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        21,
+        24
+      ],
+      "pred_blue": 3,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25116,
+      "real_red": [
+        2,
+        4,
+        8,
+        24,
+        28,
+        31
+      ],
+      "real_blue": 9,
+      "pred_red": [
+        14,
+        18,
+        23,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25117,
+      "real_red": [
+        6,
+        8,
+        17,
+        20,
+        25,
+        33
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25118,
+      "real_red": [
+        1,
+        10,
+        11,
+        16,
+        24,
+        26
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 2,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25119,
+      "real_red": [
+        6,
+        9,
+        23,
+        26,
+        28,
+        32
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        18,
+        20,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25120,
+      "real_red": [
+        1,
+        2,
+        4,
+        7,
+        13,
+        32
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25121,
+      "real_red": [
+        6,
+        8,
+        10,
+        25,
+        29,
+        30
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        23,
+        30
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25122,
+      "real_red": [
+        16,
+        18,
+        19,
+        20,
+        25,
+        31
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 13,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25123,
+      "real_red": [
+        7,
+        9,
+        23,
+        24,
+        25,
+        26
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25124,
+      "real_red": [
+        1,
+        2,
+        18,
+        19,
+        21,
+        33
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25125,
+      "real_red": [
+        3,
+        9,
+        12,
+        13,
+        26,
+        32
+      ],
+      "real_blue": 9,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25126,
+      "real_red": [
+        2,
+        12,
+        13,
+        16,
+        19,
+        25
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25127,
+      "real_red": [
+        3,
+        9,
+        15,
+        17,
+        19,
+        28
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25128,
+      "real_red": [
+        2,
+        10,
+        18,
+        19,
+        24,
+        27
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        23,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 25129,
+      "real_red": [
+        3,
+        4,
+        7,
+        13,
+        20,
+        30
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25130,
+      "real_red": [
+        1,
+        5,
+        8,
+        14,
+        19,
+        23
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25131,
+      "real_red": [
+        3,
+        13,
+        14,
+        18,
+        24,
+        31
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        18,
+        20,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25132,
+      "real_red": [
+        4,
+        8,
+        10,
+        21,
+        23,
+        32
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25133,
+      "real_red": [
+        5,
+        14,
+        17,
+        19,
+        20,
+        33
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 4,
+      "blue_hit": false,
+      "level": "五等奖"
+    },
+    {
+      "period": 25134,
+      "real_red": [
+        3,
+        5,
+        9,
+        13,
+        26,
+        29
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25135,
+      "real_red": [
+        1,
+        2,
+        5,
+        9,
+        25,
+        32
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 10,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25136,
+      "real_red": [
+        8,
+        10,
+        14,
+        23,
+        28,
+        32
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 3,
+      "blue_hit": true,
+      "level": "五等奖"
+    },
+    {
+      "period": 25137,
+      "real_red": [
+        2,
+        8,
+        11,
+        23,
+        27,
+        29
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25138,
+      "real_red": [
+        10,
+        13,
+        14,
+        23,
+        24,
+        27
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25139,
+      "real_red": [
+        2,
+        5,
+        17,
+        22,
+        30,
+        33
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25140,
+      "real_red": [
+        1,
+        3,
+        4,
+        12,
+        18,
+        24
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25141,
+      "real_red": [
+        2,
+        4,
+        5,
+        10,
+        12,
+        13
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25142,
+      "real_red": [
+        2,
+        13,
+        15,
+        23,
+        27,
+        31
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25143,
+      "real_red": [
+        2,
+        9,
+        12,
+        13,
+        15,
+        24
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25144,
+      "real_red": [
+        1,
+        8,
+        15,
+        20,
+        26,
+        33
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25145,
+      "real_red": [
+        11,
+        12,
+        15,
+        18,
+        25,
+        32
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25146,
+      "real_red": [
+        5,
+        7,
+        12,
+        24,
+        26,
+        28
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 2,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 25147,
+      "real_red": [
+        1,
+        3,
+        5,
+        8,
+        22,
+        33
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25148,
+      "real_red": [
+        3,
+        4,
+        9,
+        10,
+        15,
+        22
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25149,
+      "real_red": [
+        1,
+        2,
+        4,
+        6,
+        22,
+        30
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 25150,
+      "real_red": [
+        6,
+        13,
+        17,
+        19,
+        24,
+        31
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 25151,
+      "real_red": [
+        8,
+        9,
+        14,
+        22,
+        28,
+        30
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 26001,
+      "real_red": [
+        2,
+        6,
+        11,
+        12,
+        13,
+        33
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26002,
+      "real_red": [
+        1,
+        5,
+        7,
+        18,
+        30,
+        32
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        23
+      ],
+      "pred_blue": 2,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26003,
+      "real_red": [
+        5,
+        6,
+        9,
+        21,
+        28,
+        30
+      ],
+      "real_blue": 16,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        21,
+        23
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26004,
+      "real_red": [
+        3,
+        7,
+        8,
+        9,
+        18,
+        32
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26005,
+      "real_red": [
+        1,
+        20,
+        22,
+        27,
+        30,
+        33
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 26006,
+      "real_red": [
+        2,
+        6,
+        22,
+        23,
+        24,
+        28
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        15,
+        18,
+        23,
+        24,
+        28
+      ],
+      "pred_blue": 12,
+      "red_hit": 3,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26007,
+      "real_red": [
+        9,
+        13,
+        19,
+        27,
+        29,
+        30
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 26008,
+      "real_red": [
+        6,
+        9,
+        16,
+        27,
+        31,
+        33
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26009,
+      "real_red": [
+        3,
+        6,
+        13,
+        19,
+        23,
+        25
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 10,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26010,
+      "real_red": [
+        4,
+        9,
+        10,
+        15,
+        19,
+        26
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 12,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26011,
+      "real_red": [
+        2,
+        3,
+        4,
+        20,
+        31,
+        32
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26012,
+      "real_red": [
+        3,
+        5,
+        7,
+        16,
+        20,
+        24
+      ],
+      "real_blue": 8,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26013,
+      "real_red": [
+        4,
+        9,
+        12,
+        13,
+        16,
+        20
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26014,
+      "real_red": [
+        7,
+        13,
+        19,
+        22,
+        26,
+        32
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 26015,
+      "real_red": [
+        7,
+        10,
+        13,
+        22,
+        27,
+        31
+      ],
+      "real_blue": 12,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        28
+      ],
+      "pred_blue": 12,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 26016,
+      "real_red": [
+        4,
+        5,
+        9,
+        10,
+        27,
+        30
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 13,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 26017,
+      "real_red": [
+        1,
+        3,
+        5,
+        18,
+        29,
+        32
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26018,
+      "real_red": [
+        11,
+        15,
+        17,
+        22,
+        25,
+        30
+      ],
+      "real_blue": 7,
+      "pred_red": [
+        14,
+        15,
+        17,
+        18,
+        20,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26019,
+      "real_red": [
+        7,
+        8,
+        16,
+        17,
+        18,
+        30
+      ],
+      "real_blue": 1,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        24,
+        33
+      ],
+      "pred_blue": 1,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    },
+    {
+      "period": 26020,
+      "real_red": [
+        1,
+        13,
+        14,
+        21,
+        24,
+        30
+      ],
+      "real_blue": 2,
+      "pred_red": [
+        14,
+        18,
+        20,
+        24,
+        28,
+        33
+      ],
+      "pred_blue": 11,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26021,
+      "real_red": [
+        3,
+        13,
+        25,
+        26,
+        30,
+        31
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        24,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": true,
+      "level": "六等奖（仅蓝球）"
+    },
+    {
+      "period": 26022,
+      "real_red": [
+        15,
+        18,
+        23,
+        25,
+        28,
+        32
+      ],
+      "real_blue": 11,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        28
+      ],
+      "pred_blue": 11,
+      "red_hit": 3,
+      "blue_hit": true,
+      "level": "五等奖"
+    },
+    {
+      "period": 26023,
+      "real_red": [
+        1,
+        3,
+        8,
+        10,
+        23,
+        29
+      ],
+      "real_blue": 6,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26024,
+      "real_red": [
+        1,
+        2,
+        13,
+        21,
+        23,
+        29
+      ],
+      "real_blue": 14,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 1,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26025,
+      "real_red": [
+        2,
+        3,
+        15,
+        20,
+        23,
+        24
+      ],
+      "real_blue": 10,
+      "pred_red": [
+        14,
+        17,
+        18,
+        20,
+        23,
+        24
+      ],
+      "pred_blue": 10,
+      "red_hit": 3,
+      "blue_hit": true,
+      "level": "五等奖"
+    },
+    {
+      "period": 26026,
+      "real_red": [
+        2,
+        9,
+        16,
+        22,
+        25,
+        29
+      ],
+      "real_blue": 3,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 0,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26027,
+      "real_red": [
+        2,
+        13,
+        17,
+        18,
+        25,
+        26
+      ],
+      "real_blue": 13,
+      "pred_red": [
+        14,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "pred_blue": 13,
+      "red_hit": 1,
+      "blue_hit": true,
+      "level": "六等奖（红球1+蓝球1）"
+    },
+    {
+      "period": 26028,
+      "real_red": [
+        2,
+        6,
+        9,
+        17,
+        25,
+        28
+      ],
+      "real_blue": 15,
+      "pred_red": [
+        14,
+        17,
+        18,
+        23,
+        24,
+        28
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26029,
+      "real_red": [
+        6,
+        19,
+        22,
+        23,
+        28,
+        31
+      ],
+      "real_blue": 5,
+      "pred_red": [
+        14,
+        17,
+        18,
+        23,
+        28,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": false,
+      "level": "未中奖"
+    },
+    {
+      "period": 26030,
+      "real_red": [
+        10,
+        11,
+        14,
+        19,
+        22,
+        24
+      ],
+      "real_blue": 4,
+      "pred_red": [
+        14,
+        18,
+        20,
+        23,
+        24,
+        33
+      ],
+      "pred_blue": 4,
+      "red_hit": 2,
+      "blue_hit": true,
+      "level": "六等奖（红球2+蓝球1）"
+    }
+  ]
+}

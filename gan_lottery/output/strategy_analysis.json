@@ -1,0 +1,22 @@
+{
+  "n_test": 200,
+  "mc_runs": 5,
+  "strategy_results": {
+    "低概率(反热)": {
+      "red_avg": 1.108,
+      "comp_avg": 10.1
+    },
+    "高概率(跟热)": {
+      "red_avg": 1.106,
+      "comp_avg": 10.2
+    },
+    "混合策略": {
+      "red_avg": 1.056,
+      "comp_avg": 10.8
+    }
+  },
+  "blue_results": {
+    "低概率蓝": 6.2,
+    "高概率蓝": 8.2
+  }
+}
