@@ -7,3 +7,10 @@ run_analysis.out
 run_analysis.py
 our_gan_mode.py
 .openclaw/
+
+node_modules/
+.idea/
+build/
+dist/
+*.exe
+*.pkg

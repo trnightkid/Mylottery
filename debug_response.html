@@ -1,0 +1,65 @@
+
+<div id="container">
+
+<div class="warp">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<div class="wrap_datachart">
+					<div class="tubiao_box">
+						<div class="tubiao_box_t">
+							<table width="81%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="200"><span class="span_left">鍙岃壊鐞冿細<span class="cfont2">寮�濂栦俊鎭�</span></span></td>
+									<td align="center" style="font-weight: normal">
+																		<a href="javascript:;" onclick="getChartdata(30,0)">鏈�杩�30鏈�</a>
+																		<a href="javascript:;" onclick="getChartdata(50,0)">鏈�杩�50鏈�</a>
+																		<a href="javascript:;" onclick="getChartdata(100,0)">鏈�杩�100鏈�</a>
+																			<input id="start" name="start" value="26011" size="10" />
+										鏈� 鑷�<input id="end" name="end" value="26023" size="10" />
+										鏈� <img src="/images/info/tubiao/cx01.gif" align="absmiddle" border="0" style="cursor:pointer;" onclick="getChartdata(0,0,1)" />
+									</td>
+								</tr>
+							</table>
+							<div style="width: 950px; height: 0px; clear: both; line-height: 0px; font-size: 0px;"></div>
+						</div>
+					</div>
+					<div class="chart">
+						<table width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#C0DCF8" id="tablelist">
+							<tr>
+								<td rowspan="2" class="td_title1" style="cursor:pointer;"width="80" align="center" onclick="getChartdata(0,1);"><strong>鏈熷彿</strong><img src="/images/info/tubiao/dot_paixu2.gif" border="0" align="absmiddle" id="imgorder">&nbsp;<img src="/images/info/tubiao/paixu.gif" border="0" align="top"  /></td>
+								<td colspan="6" class="td_title1">绾㈢悆鍙风爜</td>
+								<td rowspan="2" class="td_title1">钃濈悆</td>
+								<td rowspan="2" class="td_title1">蹇�涔愭槦鏈熷ぉ</td>
+								<td rowspan="2" class="td_title1">濂栨睜濂栭噾(鍏�)</td>
+								<td colspan="2" class="td_title1">涓�绛夊��</td>
+								<td colspan="2" class="td_title1">浜岀瓑濂�</td>
+								<td rowspan="2" class="td_title1">鎬绘姇娉ㄩ��(鍏�)</td>
+								<td rowspan="2" class="td_title1">寮�濂栨棩鏈�</td>
+							</tr>
+							<tr>
+								<td class="td_title2">1</td>
+								<td class="td_title2">2</td>
+								<td class="td_title2">3</td>
+								<td class="td_title2">4</td>
+								<td class="td_title2">5</td>
+								<td class="td_title2">6</td>
+								<td class="td_title2">娉ㄦ暟</td>
+								<td class="td_title2">濂栭噾(鍏�)</td>
+								<td class="td_title2">娉ㄦ暟</td>
+								<td class="td_title2">濂栭噾(鍏�)</td>
+							</tr>
+							<tbody id="tdata">
+							<tr class="t_tr1"><!--<td>2</td>--><td>26023</td><td class="t_cfont2">01</td><td class="t_cfont2">03</td><td class="t_cfont2">08</td><td class="t_cfont2">10</td><td class="t_cfont2">23</td><td class="t_cfont2">29</td><td class="t_cfont4">06</td><td class="t_cfont4">&nbsp;</td><td>2,592,273,374</td><td>12</td><td>5,612,828</td><td>133</td><td>221,171</td><td>361,967,792</td><td>2026-03-03</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26022</td><td class="t_cfont2">15</td><td class="t_cfont2">18</td><td class="t_cfont2">23</td><td class="t_cfont2">25</td><td class="t_cfont2">28</td><td class="t_cfont2">32</td><td class="t_cfont4">11</td><td class="t_cfont4">&nbsp;</td><td>2,652,273,374</td><td>6</td><td>6,366,973</td><td>152</td><td>215,837</td><td>380,507,698</td><td>2026-03-01</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26021</td><td class="t_cfont2">03</td><td class="t_cfont2">13</td><td class="t_cfont2">25</td><td class="t_cfont2">26</td><td class="t_cfont2">30</td><td class="t_cfont2">31</td><td class="t_cfont4">04</td><td class="t_cfont4">&nbsp;</td><td>2,682,273,374</td><td>6</td><td>7,076,614</td><td>113</td><td>441,050</td><td>351,619,166</td><td>2026-02-26</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26020</td><td class="t_cfont2">01</td><td class="t_cfont2">13</td><td class="t_cfont2">14</td><td class="t_cfont2">21</td><td class="t_cfont2">24</td><td class="t_cfont2">30</td><td class="t_cfont4">02</td><td class="t_cfont4">&nbsp;</td><td>2,712,273,374</td><td>2</td><td>10,000,000</td><td>64</td><td>994,080</td><td>381,989,060</td><td>2026-02-24</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26019</td><td class="t_cfont2">07</td><td class="t_cfont2">08</td><td class="t_cfont2">16</td><td class="t_cfont2">17</td><td class="t_cfont2">18</td><td class="t_cfont2">30</td><td class="t_cfont4">01</td><td class="t_cfont4">&nbsp;</td><td>2,716,368,081</td><td>7</td><td>6,673,652</td><td>220</td><td>213,010</td><td>428,387,634</td><td>2026-02-12</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26018</td><td class="t_cfont2">11</td><td class="t_cfont2">15</td><td class="t_cfont2">17</td><td class="t_cfont2">22</td><td class="t_cfont2">25</td><td class="t_cfont2">30</td><td class="t_cfont4">07</td><td class="t_cfont4">&nbsp;</td><td>2,751,368,081</td><td>6</td><td>5,577,851</td><td>82</td><td>169,127</td><td>365,733,450</td><td>2026-02-10</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26017</td><td class="t_cfont2">01</td><td class="t_cfont2">03</td><td class="t_cfont2">05</td><td class="t_cfont2">18</td><td class="t_cfont2">29</td><td class="t_cfont2">32</td><td class="t_cfont4">04</td><td class="t_cfont4">&nbsp;</td><td>2,781,368,081</td><td>6</td><td>6,934,706</td><td>130</td><td>357,176</td><td>387,896,530</td><td>2026-02-08</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26016</td><td class="t_cfont2">04</td><td class="t_cfont2">05</td><td class="t_cfont2">09</td><td class="t_cfont2">10</td><td class="t_cfont2">27</td><td class="t_cfont2">30</td><td class="t_cfont4">13</td><td class="t_cfont4">&nbsp;</td><td>2,811,368,081</td><td>8</td><td>5,687,274</td><td>247</td><td>89,039</td><td>364,669,398</td><td>2026-02-05</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26015</td><td class="t_cfont2">07</td><td class="t_cfont2">10</td><td class="t_cfont2">13</td><td class="t_cfont2">22</td><td class="t_cfont2">27</td><td class="t_cfont2">31</td><td class="t_cfont4">12</td><td class="t_cfont4">&nbsp;</td><td>2,851,368,081</td><td>5</td><td>7,580,431</td><td>148</td><td>348,706</td><td>359,738,534</td><td>2026-02-03</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26014</td><td class="t_cfont2">07</td><td class="t_cfont2">13</td><td class="t_cfont2">19</td><td class="t_cfont2">22</td><td class="t_cfont2">26</td><td class="t_cfont2">32</td><td class="t_cfont4">01</td><td class="t_cfont4">&nbsp;</td><td>2,876,368,081</td><td>17</td><td>5,882,352</td><td>201</td><td>299,554</td><td>386,492,580</td><td>2026-02-01</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26013</td><td class="t_cfont2">04</td><td class="t_cfont2">09</td><td class="t_cfont2">12</td><td class="t_cfont2">13</td><td class="t_cfont2">16</td><td class="t_cfont2">20</td><td class="t_cfont4">01</td><td class="t_cfont4">&nbsp;</td><td>2,961,315,457</td><td>5</td><td>9,433,203</td><td>103</td><td>269,005</td><td>380,549,690</td><td>2026-01-29</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26012</td><td class="t_cfont2">03</td><td class="t_cfont2">05</td><td class="t_cfont2">07</td><td class="t_cfont2">16</td><td class="t_cfont2">20</td><td class="t_cfont2">24</td><td class="t_cfont4">08</td><td class="t_cfont4">&nbsp;</td><td>2,925,358,915</td><td>8</td><td>6,799,445</td><td>65</td><td>276,837</td><td>358,422,924</td><td>2026-01-27</td></tr><tr class="t_tr1"><!--<td>2</td>--><td>26011</td><td class="t_cfont2">02</td><td class="t_cfont2">03</td><td class="t_cfont2">04</td><td class="t_cfont2">20</td><td class="t_cfont2">31</td><td class="t_cfont2">32</td><td class="t_cfont4">04</td><td class="t_cfont4">&nbsp;</td><td>2,925,771,107</td><td>3</td><td>10,000,000</td><td>77</td><td>388,911</td><td>394,441,490</td><td>2026-01-25</td></tr>							</tbody>
+						</table>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				
+			</td>
+		</tr>
+	</table>
+	</div></div>

@@ -1,0 +1,38 @@
+
+
+version: '3.3'  # 降低版本号
+services:
+  lottery-prediction:
+    build: .
+    container_name: lottery-prediction
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./output:/app/output
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    depends_on:
+      - mysql
+    networks:
+      - lottery-net
+
+  mysql:
+    image: mysql:8.0
+    container_name: lottery-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: reven@0504
+      MYSQL_DATABASE: lottery_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - lottery-net
+
+networks:
+  lottery-net:
+    driver: bridge
+
+volumes:
+  mysql_data:
