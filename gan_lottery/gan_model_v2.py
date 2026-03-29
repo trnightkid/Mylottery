@@ -190,9 +190,9 @@ class LotteryGANV2(nn.Module):
 
     def generate(self, batch_size: int, cond: torch.Tensor, temperature: float = 1.0) -> Tuple[torch.Tensor, torch.Tensor]:
         """生成一批红球+蓝球号码（batch_size >= 2 以避免 BatchNorm 问题）"""
-        if batch_size < 2:
+        if batch_size <= 2:
             batch_size = 2
-            cond = cond.expand(batch_size, -1)
+            cond = cond.repeat(batch_size, 1)  # materialize the expanded tensor
         z = torch.randn(batch_size, self.noise_dim, device=self.device)
         red_indices = self.gen_red(z, cond, temperature)
         blue_idx = self.gen_blue(z, cond, temperature)
